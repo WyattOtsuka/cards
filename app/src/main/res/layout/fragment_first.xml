@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
+    android:background="@color/black"
     tools:context=".FirstFragment">
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:layout_weight="3"
             android:gravity="center|center_vertical"
             android:text="@string/titleString"
+            android:textColor="@android:color/white"
             android:textSize="60sp" />
 
         <Button
@@ -31,21 +33,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/playString"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:theme="@style/Theme.Cards.BlackAndWhite" />
 
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settingsString"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:theme="@style/Theme.Cards.BlackAndWhite" />
 
         <Button
             android:id="@+id/creditsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/creditsString"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:theme="@style/Theme.Cards.BlackAndWhite" />
 
         <Space
             android:layout_width="match_parent"

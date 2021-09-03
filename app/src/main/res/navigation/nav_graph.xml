@@ -6,6 +6,26 @@
     app:startDestination="@id/FirstFragment">
 
     <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.cards.CreditsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_credits">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.example.cards.SettingsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.cards.FirstFragment"
         android:label="@string/first_fragment_label"
@@ -15,21 +35,7 @@
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_FirstFragment_to_SettingsFragment"
+            app:destination="@id/SettingsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.cards.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.cards.SettingsFragment"
-        android:label="SettingsFragment" />
 </navigation>
