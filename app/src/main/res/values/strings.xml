@@ -4,6 +4,9 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="play_fragment_label">Play Fragment</string>
+    <string name="credits_fragment_label">Credits Fragment</string>
+    <string name="settings_fragment_label">Settings Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -13,4 +16,6 @@
     <string name="settingsString">Settings</string>
     <string name="titleString">Split</string>
     <string name="playString">Play</string>
+    <string name="score">0</string>
+    <string name="cardCount">Cards: 0</string>
 </resources>

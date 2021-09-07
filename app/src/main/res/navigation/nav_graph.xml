@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SettingsFragment"
         android:name="com.example.cards.SettingsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
 
         <action
@@ -32,10 +32,19 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_FirstFragment_to_CreditsFragment"
             app:destination="@id/SecondFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_PlayFragment"
+            app:destination="@id/PlayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/PlayFragment"
+        android:name="com.example.cards.PlayFragment"
+        android:label="@string/play_fragment_label"
+        tools:layout="@layout/fragment_play">
     </fragment>
 </navigation>
