@@ -46,5 +46,8 @@
         android:name="com.example.cards.PlayFragment"
         android:label="@string/play_fragment_label"
         tools:layout="@layout/fragment_play">
+        <action
+            android:id="@+id/action_PlayFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

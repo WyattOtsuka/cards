@@ -18,4 +18,9 @@
     <string name="playString">Play</string>
     <string name="score">0</string>
     <string name="cardCount">Cards: 0</string>
+    <string name="backgrond_box">Backgrond Box</string>
+    <string name="play_again">Play Again</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="second_wind">Second Wind</string>
 </resources>

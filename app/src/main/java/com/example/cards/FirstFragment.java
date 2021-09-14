@@ -25,6 +25,7 @@ public class FirstFragment extends Fragment {
     ) {
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+        Bundle bundle = new Bundle();
         return binding.getRoot();
     }
 

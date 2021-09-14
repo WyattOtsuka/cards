@@ -1,21 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:tag="playFragment"
     android:layout_height="match_parent"
     android:background="@android:color/black">
 
+
     <LinearLayout
+        android:id="@+id/gameOverFrame"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:animateLayoutChanges="true"
+        android:elevation="0dp"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="0.3"
+            android:background="@drawable/rectanglebg"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/gameOver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center_horizontal"
+                android:padding="0dp"
+                android:text="@string/game_over"
+                android:textColor="@android:color/white"
+                android:textSize="34sp"
+                app:autoSizeTextType="uniform" />
+
+            <Button
+                android:id="@+id/secondWindButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:drawableEnd="@drawable/play_small"
+                android:text="@string/second_wind"
+                android:theme="@style/Theme.Cards.BlackAndWhite" />
+
+            <Button
+                android:id="@+id/playAgainButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:padding="0dp"
+                android:text="@string/play_again"
+                android:theme="@style/Theme.Cards.BlackAndWhite" />
+
+            <Button
+                android:id="@+id/mainMenuButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:padding="0dp"
+                android:text="@string/main_menu"
+                android:theme="@style/Theme.Cards.BlackAndWhite" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gameplayLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:alpha="1"
+        android:elevation="1dp"
+        android:orientation="vertical"
+        android:weightSum="4.5">
 
         <TextView
             android:id="@+id/cardCount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
+            android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/cardCount"
             android:textColor="@android:color/white" />
@@ -24,7 +107,7 @@
             android:id="@+id/tallyText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.85"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/score"
             android:textColor="@android:color/white"
@@ -33,7 +116,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.95"
+            android:layout_weight="0.70"
             android:orientation="horizontal"
             android:weightSum="8">
 
@@ -67,12 +150,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.8" />
+
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.2" />
+            android:layout_weight="0.95" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
