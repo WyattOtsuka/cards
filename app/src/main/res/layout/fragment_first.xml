@@ -42,7 +42,8 @@
             android:layout_height="wrap_content"
             android:text="@string/settingsString"
             android:textSize="34sp"
-            android:theme="@style/Theme.Cards.BlackAndWhite" />
+            android:theme="@style/Theme.Cards.BlackAndWhite"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/creditsButton"
@@ -50,7 +51,8 @@
             android:layout_height="wrap_content"
             android:text="@string/creditsString"
             android:textSize="34sp"
-            android:theme="@style/Theme.Cards.BlackAndWhite" />
+            android:theme="@style/Theme.Cards.BlackAndWhite"
+            android:visibility="gone" />
 
         <Space
             android:layout_width="match_parent"

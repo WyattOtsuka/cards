@@ -61,6 +61,8 @@ public class PlayFragment extends Fragment {
     Button mainMenuButton;
     AdView bannerAd;
     AdRequest bannerAdRequest;
+    long tickRate = 10;
+    long maxTick = 2000;
     //SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
     //private SharedPreferences.Editor editor = prefs.edit();
 
@@ -83,16 +85,15 @@ public class PlayFragment extends Fragment {
         binding.leftButton.setEnabled(false);
 
         // Timer
-        timer = new CountDownTimer(30000, 1000) {
-
+        timer = new CountDownTimer(maxTick, tickRate) {
             public void onTick(long millisUntilFinished) {
-
+                binding.getRoot().setBackgroundColor(Color.parseColor("#" +(9 - 10 * millisUntilFinished/maxTick) + "00000"));
             }
 
             public void onFinish() {
-
+                gameOver();
             }
-        }.start();
+        };
 
         return binding.getRoot();
     }
@@ -105,7 +106,6 @@ public class PlayFragment extends Fragment {
 
         // Video Ads
         AdRequest videoAdRequest = new AdRequest.Builder().build();
-
         createNewAd(videoAdRequest);
 
         // Test id for Video Ads
@@ -194,8 +194,11 @@ public class PlayFragment extends Fragment {
             countdown.setVisibility(View.GONE);
             binding.rightButton.setEnabled(true);
             binding.leftButton.setEnabled(true);
+            timer.start();
         }
     }
+
+    //-------------------------------GAMEPLAY-------------------------------//
     private void updateTally(View view, int delta) {
         String countString = tally.getText().toString();
         Integer currTally = Integer.parseInt(countString);
@@ -218,6 +221,24 @@ public class PlayFragment extends Fragment {
         if (value == 0) {
             value = (int)(Math.random()*11-5.5);
         }
+        binding.getRoot().setBackgroundColor(Color.parseColor("#000000"));
+        timer.cancel();
+        if (count % 10 == 0) {
+            maxTick*=0.8;
+            timer = new CountDownTimer(maxTick, tickRate) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    binding.getRoot().setBackgroundColor(Color.parseColor("#" +(9 - 10 * millisUntilFinished/maxTick) + "00000"));
+                }
+
+                @Override
+                public void onFinish() {
+                    gameOver();
+                }
+            }.start();
+        } else {
+            timer.start();
+        }
         return String.valueOf(value);
     }
 
@@ -238,6 +259,19 @@ public class PlayFragment extends Fragment {
         tally.setTextColor(Color.parseColor(color));
     }
 
+    private void disableButtons() {
+        playAgainButton.setEnabled(false);
+        mainMenuButton.setEnabled(false);
+        secondWindButton.setEnabled(false);
+    }
+
+    private void enableButtons() {
+        secondWindButton.setEnabled(true);
+        mainMenuButton.setEnabled(true);
+        playAgainButton.setEnabled(true);
+    }
+
+    //-------------------------------GAME OVER-------------------------------//
     // Makes Game Over box apear
     private void gameOver() {
         // Disables left and right buttons
@@ -252,6 +286,7 @@ public class PlayFragment extends Fragment {
         gameOverFrame.animate().alpha(1f).setDuration(500).setListener(new Animator.AnimatorListener() {
             public void onAnimationStart(Animator animator){
                 disableButtons();
+                timer.cancel();
             }
             public void onAnimationEnd(Animator animator){
                 enableButtons();
@@ -262,18 +297,6 @@ public class PlayFragment extends Fragment {
             public void onAnimationRepeat(Animator animator){
             }
         });
-    }
-
-    private void disableButtons() {
-        playAgainButton.setEnabled(false);
-        mainMenuButton.setEnabled(false);
-        secondWindButton.setEnabled(false);
-    }
-
-    private void enableButtons() {
-        secondWindButton.setEnabled(true);
-        mainMenuButton.setEnabled(true);
-        playAgainButton.setEnabled(true);
     }
 
     // Resets only Tally value
@@ -302,8 +325,6 @@ public class PlayFragment extends Fragment {
         // Resets Buttons
         binding.rightButton.setText(Integer.toString(1));
         binding.leftButton.setText(Integer.toString(-1));
-        binding.rightButton.setEnabled(true);
-        binding.leftButton.setEnabled(true);
         // Resets Game Over layout
         LinearLayout gameOverFrame = binding.gameOverFrame;
         gameOverFrame.setElevation(0);
@@ -315,8 +336,23 @@ public class PlayFragment extends Fragment {
         // Resets secondWind
         secondWindButton.setVisibility(View.VISIBLE);
 
+        // Reset background and timer
+        binding.getRoot().setBackgroundColor(Color.parseColor("#000000"));
+        countdown(3);
+        maxTick = 2000;
+        timer = new CountDownTimer(maxTick, tickRate) {
+            public void onTick(long millisUntilFinished) {
+                binding.getRoot().setBackgroundColor(Color.parseColor("#" +(9 - 10 * millisUntilFinished/maxTick) + "00000"));
+            }
+
+            public void onFinish() {
+                gameOver();
+            }
+        };
     }
 
+
+    //-------------------------------ADVERTISMENTS-------------------------------//
     private RewardedAd createNewAd(AdRequest adRequest) {
         RewardedAd.load((MainActivity)getActivity(), "ca-app-pub-3940256099942544/5224354917",
                 adRequest, new RewardedAdLoadCallback() {
@@ -385,7 +421,6 @@ public class PlayFragment extends Fragment {
     public void loadAds() {
         bannerAd.loadAd(bannerAdRequest);
     }
-
 
     @Override
     public void onDestroyView() {
