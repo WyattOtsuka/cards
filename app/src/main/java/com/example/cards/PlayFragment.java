@@ -59,6 +59,8 @@ public class PlayFragment extends Fragment {
     Button secondWindButton;
     Button playAgainButton;
     Button mainMenuButton;
+    AdView bannerAd;
+    AdRequest bannerAdRequest;
     //SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
     //private SharedPreferences.Editor editor = prefs.edit();
 
@@ -75,8 +77,10 @@ public class PlayFragment extends Fragment {
         secondWindButton.setVisibility(View.VISIBLE);
         mainMenuButton = binding.mainMenuButton;
         playAgainButton = binding.playAgainButton;
+        //bannerAd = binding.gameplayBanner;
 
-        System.out.println("MainMenu: " + mainMenuButton + "PlayAgain: " + playAgainButton);
+        binding.rightButton.setEnabled(false);
+        binding.leftButton.setEnabled(false);
 
         // Timer
         timer = new CountDownTimer(30000, 1000) {
@@ -95,24 +99,14 @@ public class PlayFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Banner ad
-        AdView bannerAd = binding.gameplayBanner;
-        AdRequest bannerAdRequest = new AdRequest.Builder().build();
 
-        /*
-        LinearLayout container = binding.gameplayLayout;
-        AdView bannerAd = new AdView((MainActivity)getActivity());
-        bannerAd.setAdSize(AdSize.BANNER);
-        bannerAd.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        container.addView(bannerAd, params);
-*/
-        bannerAd.loadAd(bannerAdRequest);
+        countdown(3);
 
 
         // Video Ads
         AdRequest videoAdRequest = new AdRequest.Builder().build();
-        //createNewAd(videoAdRequest);
+
+        createNewAd(videoAdRequest);
 
         // Test id for Video Ads
         List<String> testDeviceIds = Arrays.asList("3F4E17538612DA42BA159696F049E455");
@@ -174,6 +168,33 @@ public class PlayFragment extends Fragment {
                 showAd();
             }
         });
+    }
+
+    private void countdown(int count) {
+        TextView countdown = binding.countdown;
+        if (count > 0) {
+            countdown.setVisibility(View.GONE);
+            countdown.setAlpha(1f);
+            countdown.setVisibility(View.VISIBLE);
+            countdown.animate().alpha(0f).setDuration(100).setStartDelay(800).setListener(new Animator.AnimatorListener() {
+                public void onAnimationStart(Animator animator){
+
+                }
+                public void onAnimationEnd(Animator animator){
+                    countdown.animate().alpha(1f).setDuration(100).setListener(null);
+                    countdown.setText(String.valueOf(count-1));
+                    countdown(count-1);
+                }
+                public void onAnimationCancel(Animator animator){
+                }
+                public void onAnimationRepeat(Animator animator){
+                }
+            });
+        } else {
+            countdown.setVisibility(View.GONE);
+            binding.rightButton.setEnabled(true);
+            binding.leftButton.setEnabled(true);
+        }
     }
     private void updateTally(View view, int delta) {
         String countString = tally.getText().toString();
@@ -361,7 +382,9 @@ public class PlayFragment extends Fragment {
         }
     }
 
-
+    public void loadAds() {
+        bannerAd.loadAd(bannerAdRequest);
+    }
 
 
     @Override

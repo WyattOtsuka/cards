@@ -40,6 +40,15 @@
         <action
             android:id="@+id/action_FirstFragment_to_PlayFragment"
             app:destination="@id/PlayFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_PlayFragment2"
+            app:destination="@id/PlayFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_SettingsFragment2"
+            app:destination="@id/SettingsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_PlayFragment3"
+            app:destination="@id/PlayFragment" />
     </fragment>
     <fragment
         android:id="@+id/PlayFragment"

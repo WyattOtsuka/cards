@@ -23,4 +23,5 @@
     <string name="main_menu">Main Menu</string>
     <string name="game_over">GAME OVER</string>
     <string name="second_wind">Second Wind</string>
+    <string name="countdownText">3</string>
 </resources>
