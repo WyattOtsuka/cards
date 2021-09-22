@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.cards.CreditsFragment"
+        android:name="com.otsuka.cards.CreditsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_credits">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="com.example.cards.SettingsFragment"
+        android:name="com.otsuka.cards.SettingsFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
 
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.cards.FirstFragment"
+        android:name="com.otsuka.cards.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/PlayFragment"
-        android:name="com.example.cards.PlayFragment"
+        android:name="com.otsuka.cards.PlayFragment"
         android:label="@string/play_fragment_label"
         tools:layout="@layout/fragment_play">
         <action
