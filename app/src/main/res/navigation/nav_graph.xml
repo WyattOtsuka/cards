@@ -16,6 +16,15 @@
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
+        android:id="@+id/TutorialFragment"
+        android:name="com.otsuka.cards.TutorialFragment"
+        tools:layout="@layout/fragment_tutorial">
+
+        <action
+            android:id="@+id/action_TutorialFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/SettingsFragment"
         android:name="com.otsuka.cards.SettingsFragment"
         android:label="@string/settings_fragment_label"
@@ -35,19 +44,13 @@
             android:id="@+id/action_FirstFragment_to_CreditsFragment"
             app:destination="@id/SecondFragment" />
         <action
+            android:id="@+id/action_FirstFragment_to_TutorialFragment"
+            app:destination="@id/TutorialFragment" />
+        <action
             android:id="@+id/action_FirstFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_PlayFragment"
-            app:destination="@id/PlayFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_PlayFragment2"
-            app:destination="@id/PlayFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_SettingsFragment2"
-            app:destination="@id/SettingsFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_PlayFragment3"
             app:destination="@id/PlayFragment" />
     </fragment>
     <fragment

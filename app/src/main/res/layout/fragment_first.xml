@@ -37,13 +37,21 @@
             android:theme="@style/Theme.Cards.BlackAndWhite" />
 
         <Button
+            android:id="@+id/tutorialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How to Play"
+            android:textSize="34sp"
+            android:theme="@style/Theme.Cards.BlackAndWhite" />
+
+        <Button
             android:id="@+id/settingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settingsString"
             android:textSize="34sp"
             android:theme="@style/Theme.Cards.BlackAndWhite"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/creditsButton"

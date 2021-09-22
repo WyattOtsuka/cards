@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:theme="@style/Theme.Cards.BlackAndWhite">
+
+    <TextView
+        android:id="@+id/tutorialTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How to Play"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toTopOf="@+id/rules1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rules1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="-Keep the count between -10 and 10"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toTopOf="@+id/rules2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tutorialTitle" />
+
+    <TextView
+        android:id="@+id/rules2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="-Play a card before the time runs out. Every 10 cards speeds up the timer"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toTopOf="@+id/rules3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules1" />
+
+    <TextView
+        android:id="@+id/rules3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="-Play as many cards as possible"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules2" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
