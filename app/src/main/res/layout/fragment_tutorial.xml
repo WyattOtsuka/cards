@@ -68,6 +68,7 @@
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="Home"
         android:theme="@style/Theme.Cards.BlackAndWhite"
         app:layout_constraintBottom_toBottomOf="parent"

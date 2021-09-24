@@ -62,44 +62,13 @@ public class PlayFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         binding = FragmentPlayBinding.inflate(inflater, container, false);
-        // Gets elements of view
-        tally = binding.tallyText;
-        cardCount = binding.cardCount;
-        secondWindButton = binding.secondWindButton;
-        secondWindButton.setVisibility(View.VISIBLE);
-        mainMenuButton = binding.mainMenuButton;
-        playAgainButton = binding.playAgainButton;
-        //bannerAd = binding.gameplayBanner;
-
-        binding.rightButton.setEnabled(false);
-        binding.leftButton.setEnabled(false);
-
-        // Timer
-        timer = new CountDownTimer(maxTick, tickRate) {
-            public void onTick(long millisUntilFinished) {
-                View root = binding.getRoot();
-                if (root != null) {
-                    root.setBackgroundColor(Color.parseColor("#" + (9 - 10 * millisUntilFinished / maxTick) + "00000"));
-                }
-            }
-
-            public void onFinish() {
-                gameOver();
-            }
-        };
-
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        countdown(3);
-
-
-        // Video Ads
-        AdRequest videoAdRequest = new AdRequest.Builder().build();
-        createNewAd(videoAdRequest);
+        helper.sendViewToBack(binding.gameOverFrame, binding.getRoot());
 
 
         binding.leftButton.setOnClickListener(new View.OnClickListener() {
@@ -140,13 +109,16 @@ public class PlayFragment extends Fragment {
         binding.mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                helper.sendViewToBack(binding.gameOverFrame, binding.getRoot());
                 NavHostFragment.findNavController(PlayFragment.this)
                         .navigate(R.id.action_PlayFragment_to_FirstFragment);
             }
+
         });
         binding.playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                helper.sendViewToBack(binding.gameOverFrame, binding.getRoot());
                 reset();
             }
         });
@@ -156,33 +128,74 @@ public class PlayFragment extends Fragment {
                 showAd();
             }
         });
+
+        // Gets elements of view
+        tally = binding.tallyText;
+        cardCount = binding.cardCount;
+        secondWindButton = binding.secondWindButton;
+        secondWindButton.setVisibility(View.VISIBLE);
+        mainMenuButton = binding.mainMenuButton;
+        playAgainButton = binding.playAgainButton;
+        //bannerAd = binding.gameplayBanner;
+
+        binding.rightButton.setEnabled(false);
+        binding.leftButton.setEnabled(false);
+
+        // Timer
+        timer = new CountDownTimer(maxTick, tickRate) {
+            public void onTick(long millisUntilFinished) {
+                View root = binding.getRoot();
+                if (root != null) {
+                    root.setBackgroundColor(Color.parseColor("#" + (9 - 10 * millisUntilFinished / maxTick) + "00000"));
+                }
+            }
+
+            public void onFinish() {
+                gameOver();
+            }
+        };
+
+        disableButtons();
+
+
+
+        countdown(3);
+
+        // Video Ads
+        AdRequest videoAdRequest = new AdRequest.Builder().build();
+        createNewAd(videoAdRequest);
     }
 
     private void countdown(int count) {
-        TextView secondCount = binding.countdown;
-        if (count > 0) {
-            secondCount.setVisibility(View.GONE);
-            secondCount.setAlpha(1f);
-            secondCount.setVisibility(View.VISIBLE);
-            secondCount.animate().alpha(0f).setDuration(100).setStartDelay(800).setListener(new Animator.AnimatorListener() {
-                public void onAnimationStart(Animator animator){
+        try {
+            TextView secondCount = binding.countdown;
+            System.out.println(count);
+            if (count > 0) {
+                secondCount.setVisibility(View.GONE);
+                secondCount.setAlpha(1f);
+                secondCount.setVisibility(View.VISIBLE);
+                secondCount.animate().alpha(0f).setDuration(100).setStartDelay(800).setListener(new Animator.AnimatorListener() {
+                    public void onAnimationStart(Animator animator){
 
-                }
-                public void onAnimationEnd(Animator animator){
-                    secondCount.animate().alpha(1f).setDuration(100).setListener(null);
-                    secondCount.setText(String.valueOf(count-1));
-                    countdown(count-1);
-                }
-                public void onAnimationCancel(Animator animator){
-                }
-                public void onAnimationRepeat(Animator animator){
-                }
-            });
-        } else {
-            secondCount.setVisibility(View.GONE);
-            binding.rightButton.setEnabled(true);
-            binding.leftButton.setEnabled(true);
-            timer.start();
+                    }
+                    public void onAnimationEnd(Animator animator){
+                        secondCount.animate().alpha(1f).setDuration(100).setListener(null);
+                        secondCount.setText(String.valueOf(count-1));
+                        countdown(count-1);
+                    }
+                    public void onAnimationCancel(Animator animator){
+                    }
+                    public void onAnimationRepeat(Animator animator){
+                    }
+                });
+            } else {
+                secondCount.setVisibility(View.GONE);
+                binding.rightButton.setEnabled(true);
+                binding.leftButton.setEnabled(true);
+                timer.start();
+            }
+        } catch(NullPointerException e){
+            System.out.println(e);
         }
     }
 
@@ -267,6 +280,7 @@ public class PlayFragment extends Fragment {
         binding.leftButton.setEnabled(false);
         // Fades in Game Over
         LinearLayout gameOverFrame = binding.gameOverFrame;
+        helper.bringToFront(gameOverFrame, binding.getRoot());
         gameOverFrame.setElevation(2);
         gameOverFrame.setVisibility(View.GONE);
         gameOverFrame.setAlpha(0f);
@@ -362,7 +376,6 @@ public class PlayFragment extends Fragment {
                         Log.d(TAG, "Ad was loaded.");
                     }
                 });
-        System.out.println(mRewardedAd);
         return mRewardedAd;
     }
 
@@ -427,3 +440,4 @@ public class PlayFragment extends Fragment {
         binding = null;
     }
 }
+
