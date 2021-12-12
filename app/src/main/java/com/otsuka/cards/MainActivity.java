@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private final String TAG = "MainActivity";
     public com.google.android.gms.ads.AdView googleBannerAd;
-    private com.facebook.ads.AdView facebookBannerAd;
     public boolean test = false;
 
     @Override

@@ -95,8 +95,33 @@ public class PlayFragment extends Fragment {
                     int rightValue = Integer.parseInt(binding.rightButton.getText().toString());
                     binding.rightButton.setText(Integer.toString(-1 * rightValue));
                     sinceRight = 0;
+
+                    binding.rightButton.animate().rotation(180).setDuration(50).setListener(new Animator.AnimatorListener() {
+                        public void onAnimationStart(Animator animator) {}
+                        public void onAnimationEnd(Animator animator) {
+                            binding.rightButton.animate().rotation(0).setDuration(0).setListener(null);
+                        }
+                        public void onAnimationCancel(Animator animator) {}
+                        public void onAnimationRepeat(Animator animator) {}
+                    });
                 } else {
                     sinceRight++;
+
+                    binding.rightButton.animate().translationX(sinceRight*3).setDuration(12).setListener(new Animator.AnimatorListener() {
+                        public void onAnimationStart(Animator animator) {}
+                        public void onAnimationEnd(Animator animator) {
+                            binding.rightButton.animate().translationX(-sinceRight*6).setDuration(24).setListener(new Animator.AnimatorListener() {
+                                public void onAnimationStart(Animator animator) {}
+                                public void onAnimationEnd(Animator animator) {
+                                    binding.rightButton.animate().translationX(sinceRight*3).setDuration(12).setListener(null);
+                                }
+                                public void onAnimationCancel(Animator animator) {}
+                                public void onAnimationRepeat(Animator animator) {}
+                            });
+                        }
+                        public void onAnimationCancel(Animator animator) {}
+                        public void onAnimationRepeat(Animator animator) {}
+                    });
                 }
             }
         });
@@ -121,8 +146,33 @@ public class PlayFragment extends Fragment {
                     int leftValue = Integer.parseInt(binding.leftButton.getText().toString());
                     binding.leftButton.setText(Integer.toString(-1 * leftValue));
                     sinceLeft = 0;
+                    binding.leftButton.animate().rotation(180).setDuration(50).setListener(new Animator.AnimatorListener() {
+                        public void onAnimationStart(Animator animator) {}
+                        public void onAnimationEnd(Animator animator) {
+                            binding.leftButton.animate().rotation(0).setDuration(0).setListener(null);
+                        }
+                        public void onAnimationCancel(Animator animator) {}
+                        public void onAnimationRepeat(Animator animator) {}
+                    });
+
                 } else {
                     sinceLeft++;
+
+                    binding.leftButton.animate().translationX(sinceLeft*3).setDuration(12).setListener(new Animator.AnimatorListener() {
+                        public void onAnimationStart(Animator animator) {}
+                        public void onAnimationEnd(Animator animator) {
+                            binding.leftButton.animate().translationX(-sinceLeft*6).setDuration(24).setListener(new Animator.AnimatorListener() {
+                                public void onAnimationStart(Animator animator) {}
+                                public void onAnimationEnd(Animator animator) {
+                                    binding.leftButton.animate().translationX(sinceLeft*3).setDuration(12).setListener(null);
+                                }
+                                public void onAnimationCancel(Animator animator) {}
+                                public void onAnimationRepeat(Animator animator) {}
+                            });
+                        }
+                        public void onAnimationCancel(Animator animator) {}
+                        public void onAnimationRepeat(Animator animator) {}
+                    });
                 }
             }
         });
