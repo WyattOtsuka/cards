@@ -227,8 +227,6 @@ public class PlayFragment extends Fragment {
 
         disableButtons();
 
-
-
         countdown(3);
 
         // Video Ads
@@ -348,6 +346,11 @@ public class PlayFragment extends Fragment {
         // Disables left and right buttons
         binding.rightButton.setEnabled(false);
         binding.leftButton.setEnabled(false);
+
+        // Resets sinceLeft/Right
+        sinceLeft = 0;
+        sinceRight = 0;
+
         // Fades in Game Over
         LinearLayout gameOverFrame = binding.gameOverFrame;
         helper.bringToFront(gameOverFrame, binding.getRoot());
