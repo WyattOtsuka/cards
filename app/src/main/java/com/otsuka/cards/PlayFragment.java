@@ -53,6 +53,8 @@ public class PlayFragment extends Fragment {
     AdRequest bannerAdRequest;
     long tickRate = 10;
     long maxTick = 2000;
+    int sinceLeft = 0;
+    int sinceRight = 0;
     //SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
     //private SharedPreferences.Editor editor = prefs.edit();
 
@@ -87,6 +89,15 @@ public class PlayFragment extends Fragment {
                 if (Math.abs(tallyValue) >= GAME_MAX) {
                     gameOver();
                 }
+                //flips the right if left is played 3 times in a row
+                sinceLeft = 0;
+                if (sinceRight > 1) {
+                    int rightValue = Integer.parseInt(binding.rightButton.getText().toString());
+                    binding.rightButton.setText(Integer.toString(-1 * rightValue));
+                    sinceRight = 0;
+                } else {
+                    sinceRight++;
+                }
             }
         });
         binding.rightButton.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +115,15 @@ public class PlayFragment extends Fragment {
                     gameOver();
                 }
                 binding.rightButton.setText(Integer.toString(rightValue));
+                sinceRight = 0;
+                //flips the left if the right is played 3 times
+                if (sinceLeft > 1) {
+                    int leftValue = Integer.parseInt(binding.leftButton.getText().toString());
+                    binding.leftButton.setText(Integer.toString(-1 * leftValue));
+                    sinceLeft = 0;
+                } else {
+                    sinceLeft++;
+                }
             }
         });
         binding.mainMenuButton.setOnClickListener(new View.OnClickListener() {
