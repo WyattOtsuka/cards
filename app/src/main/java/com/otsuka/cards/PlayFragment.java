@@ -347,10 +347,6 @@ public class PlayFragment extends Fragment {
         binding.rightButton.setEnabled(false);
         binding.leftButton.setEnabled(false);
 
-        // Resets sinceLeft/Right
-        sinceLeft = 0;
-        sinceRight = 0;
-
         // Fades in Game Over
         LinearLayout gameOverFrame = binding.gameOverFrame;
         helper.bringToFront(gameOverFrame, binding.getRoot());
@@ -362,6 +358,9 @@ public class PlayFragment extends Fragment {
             public void onAnimationStart(Animator animator){
                 disableButtons();
                 timer.cancel();
+                // Resets sinceLeft/Right
+                sinceLeft = 0;
+                sinceRight = 0;
             }
             public void onAnimationEnd(Animator animator){
                 enableButtons();
