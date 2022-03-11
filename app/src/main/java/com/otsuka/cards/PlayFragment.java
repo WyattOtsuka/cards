@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -367,12 +368,18 @@ public class PlayFragment extends Fragment {
             editor.putInt("highScore", count);
             editor.commit();
             highScore = count;
+            binding.gameOver.setText("HIGH SCORE");
+            binding.gameOver.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32);
+        } else {
+            binding.gameOver.setText("GAME OVER");
+            binding.gameOver.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32);
         }
         highScoreText.setText("High Score: " + highScore);
 
 
         // Fades in Game Over
         LinearLayout gameOverFrame = binding.gameOverFrame;
+
         helper.bringToFront(gameOverFrame, binding.getRoot());
         gameOverFrame.setElevation(2);
         gameOverFrame.setVisibility(View.GONE);
