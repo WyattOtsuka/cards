@@ -43,6 +43,7 @@ public class PlayFragment extends Fragment {
     private FragmentPlayBinding binding;
     TextView tally;
     TextView cardCount;
+    TextView highScoreText;
     int count = 0;
     final int GAME_MAX = 10;
     private RewardedAd mRewardedAd;
@@ -57,9 +58,15 @@ public class PlayFragment extends Fragment {
     long maxTick = 2000;
     int sinceLeft = 0;
     int sinceRight = 0;
-    SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
-    private SharedPreferences.Editor editor = prefs.edit();
-    int highScore = prefs.getInt("highScore", 0);
+    SharedPreferences prefs;
+    int highScore;
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        prefs = getActivity().getSharedPreferences("highScore", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        highScore = prefs.getInt("highScore", 0);
+    }
 
     @Override
     public View onCreateView(
@@ -205,6 +212,7 @@ public class PlayFragment extends Fragment {
         // Gets elements of view
         tally = binding.tallyText;
         cardCount = binding.cardCount;
+        highScoreText = binding.highScore;
         secondWindButton = binding.secondWindButton;
         secondWindButton.setVisibility(View.VISIBLE);
         mainMenuButton = binding.mainMenuButton;
@@ -213,6 +221,9 @@ public class PlayFragment extends Fragment {
 
         binding.rightButton.setEnabled(false);
         binding.leftButton.setEnabled(false);
+
+        // Set high score
+        highScoreText.setText("High Score: " + highScore);
 
         // Timer
         timer = new CountDownTimer(maxTick, tickRate) {
@@ -349,6 +360,16 @@ public class PlayFragment extends Fragment {
         // Disables left and right buttons
         binding.rightButton.setEnabled(false);
         binding.leftButton.setEnabled(false);
+
+        // Checks and sets high score
+        if (count > highScore) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("highScore", count);
+            editor.commit();
+            highScore = count;
+        }
+        highScoreText.setText("High Score: " + highScore);
+
 
         // Fades in Game Over
         LinearLayout gameOverFrame = binding.gameOverFrame;

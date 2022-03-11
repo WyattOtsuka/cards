@@ -96,14 +96,16 @@
             android:id="@+id/highScore"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.15"
-            android:text="High Score: 0" />
+            android:layout_weight="1.2"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/highScore"
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/cardCount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.15"
+            android:layout_weight="1.1"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/cardCount"
             android:textColor="@android:color/white" />
@@ -112,7 +114,7 @@
             android:id="@+id/tallyText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             android:gravity="center_horizontal|center_vertical"
             android:text="@string/score"
             android:textColor="@android:color/white"
@@ -121,7 +123,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight=".7"
+            android:layout_weight=".8"
             android:orientation="horizontal"
             android:weightSum="8">
 
