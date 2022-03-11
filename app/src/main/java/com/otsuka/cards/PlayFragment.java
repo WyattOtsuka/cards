@@ -4,6 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -55,8 +57,9 @@ public class PlayFragment extends Fragment {
     long maxTick = 2000;
     int sinceLeft = 0;
     int sinceRight = 0;
-    //SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
-    //private SharedPreferences.Editor editor = prefs.edit();
+    SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+    private SharedPreferences.Editor editor = prefs.edit();
+    int highScore = prefs.getInt("highScore", 0);
 
     @Override
     public View onCreateView(
