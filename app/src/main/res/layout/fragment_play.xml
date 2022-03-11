@@ -130,7 +130,8 @@
                 android:layout_weight="1.3"
                 android:text="-1"
                 android:textSize="34sp"
-                android:theme="@style/Theme.Cards.BlackAndWhite" />
+                android:theme="@style/Theme.Cards.BlackAndWhite"
+                android:soundEffectsEnabled="false" />
 
             <Space
                 android:layout_width="match_parent"
@@ -144,7 +145,8 @@
                 android:layout_weight="1.3"
                 android:text="1"
                 android:textSize="34sp"
-                android:theme="@style/Theme.Cards.BlackAndWhite" />
+                android:theme="@style/Theme.Cards.BlackAndWhite"
+                android:soundEffectsEnabled="false" />
 
             <Space
                 android:layout_width="match_parent"

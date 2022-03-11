@@ -54,26 +54,42 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:text="-Play the same Card 3 times to flip the value of the other card"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:theme="@style/Theme.Cards.BlackAndWhite"
+        app:layout_constraintBottom_toTopOf="@+id/rules4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules2" />
+
+    <TextView
+        android:id="@+id/rules4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:text="-Play as many cards as possible"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:theme="@style/Theme.Cards.BlackAndWhite"
         app:layout_constraintBottom_toTopOf="@+id/homeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rules2" />
+        app:layout_constraintTop_toBottomOf="@+id/rules3" />
 
     <Button
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="72dp"
         android:text="Home"
         android:theme="@style/Theme.Cards.BlackAndWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rules3" />
+        app:layout_constraintTop_toBottomOf="@+id/rules4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
